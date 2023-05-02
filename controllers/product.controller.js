@@ -48,10 +48,20 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const deleteAll = async (req, res) => {
+  try {
+    const deletedCountObj = await Product.deleteMany({});
+    res.status(200).json(deletedCountObj);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 module.exports = {
   getProducts,
   getProduct,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  deleteAll
 };
